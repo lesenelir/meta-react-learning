@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  </head>
+  <body>
+    <div id="test"></div>
+
+    <script src="../js/17.0.1/react.development.js"></script>
+    <script src="../js/17.0.1/react-dom.development.js"></script>
+    <script src="../js/17.0.1/babel.min.js"></script>
+    <script src="../js/17.0.1/prop-types.js"></script>
+
+    <script type="text/babel">
+      class Count extends React.Component {
+        constructor(props) {
+          console.log('constructor')
+          super(props)
+          this.state = {
+            count: 0
+          }
+        }
+
+        add = () => {
+          const {count} = this.state
+          this.setState({count: count + 1})
+        }
+
+        death = () => {
+          ReactDOM.unmountComponentAtNode(document.getElementById('test'))
+        }
+
+        force = () => {
+          this.forceUpdate()
+        }
+
+        // 生命周期钩子函数如下：
+
+        // 若state值任何时候都取决props则需要调用这个生命周期钩子函数
+        static getDerivedStateFromProps(nextProps, prevState) {
+          console.log('getDerivedStateFromProps')
+          console.log(nextProps, prevState)
+          // return nextProps
+          return null
+        }
+
+        // 更新前获取快照
+        getSnapshotBeforeUpdate(prevProps, prevState) {
+          console.log('getSnapshotBeforeUpdate')
+          return null
+        }
+
+        // 组件挂载完毕的钩子函数
+        componentDidMount() {
+          console.log('componentDidMount')
+        }
+
+        // 组件卸载前的钩子函数
+        componentWillUnmount() {
+          console.log('componentWillUnmount')
+        }
+
+        // 控制组件更新阀门的钩子函数
+        // 该生命周期钩子函数需要返回一个boolean
+        shouldComponentUpdate(nextProps, nextState) {
+          console.log('shouldComponentUpdate')
+          return true // 阀门 需要返回一个boolean
+        }
+
+        // 组件更新完毕后的钩子函数
+        componentDidUpdate(prevProps, prevState, snapShotValue) {
+          console.log('componentDidUpdate')
+        }
+
+        render() {
+          console.log('render')
+          return (
+              <div>
+                <h2>当前求和为: {this.state.count}</h2>
+                <button onClick={this.add}>点+1</button>
+                <button onClick={this.death}>卸载组件</button>
+                <button onClick={this.force}>不更改任何状态中的数据，强制更新下</button>
+              </div>
+          )
+        }
+      }
+
+      ReactDOM.render(<Count/>, document.getElementById('test'))
+
+    </script>
+
+  </body>
+</html>

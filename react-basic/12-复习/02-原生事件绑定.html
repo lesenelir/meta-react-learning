@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  </head>
+  <body>
+    <button id="btn1">按钮1</button>
+    <button id="btn2">按钮2</button>
+    <button onclick="demo()">按钮3</button>
+
+    <script>
+      const btn1 = document.getElementById('btn1')
+      btn1.addEventListener('click', () => {
+        alert('按钮1点击')
+      })
+
+      const btn2 = document.getElementById('btn2')
+      btn2.onclick = function () {
+        alert('按钮2点击')
+      }
+
+      function demo() {
+        alert('按钮3点击')
+      }
+
+    </script>
+
+  </body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>类</title>
+  </head>
+  <body>
+    <script>
+
+      class Person {
+        constructor(name, age) {
+          this.name = name
+          this.age = age
+        }
+
+        speak() {
+          console.log(`我叫${this.name}，年龄是${this.age}`)
+        }
+      }
+
+      class Student extends Person {
+        constructor(name, age, id) {
+          super(name, age)
+          this.id = id
+        }
+      }
+
+      const p1 = new Person('tom', 18)
+      p1.speak()
+
+      const s1 = new Student('lee', 20, 1)
+      s1.speak()
+      console.log(s1)
+
+      class Car {
+        // 类中可以直接写属性， 相当于非静态属性
+        // 给Car的实例对象添加一个属性，名为wheel，值为4
+        wheel = 4
+
+        // 给函数对象，即类的添加属性
+        static test = 100
+
+        constructor(name, price) {
+          this.name = name
+          this.price = price
+          // this.wheel = 4
+        }
+      }
+      const c1 = new Car('Benz', 199)
+      console.log(c1)
+
+    </script>
+  </body>
+</html>

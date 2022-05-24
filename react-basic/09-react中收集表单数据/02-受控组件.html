@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  </head>
+  <body>
+    <div id="test"></div>
+
+    <script src="../js/react.development.js"></script>
+    <script src="../js/react-dom.development.js"></script>
+    <script src="../js/babel.min.js"></script>
+    <script src="../js/prop-types.js"></script>
+
+    <script type="text/babel">
+      // 创建组件 - 非受控表单
+      class Login extends React.Component {
+        // 初始化状态
+        state = {
+          username: '',
+          password: ''
+        }
+
+        // 保存用户名到状态中
+        saveUsername = (event) => {
+          console.log(event.target.value)
+          this.setState({username: event.target.value})
+        }
+
+        // 保存密码到状态中
+        savePassword = (event) => {
+          console.log(event.target.value)
+          this.setState({password: event.target.value})
+        }
+
+        // 表单提交的回调
+        handleSubmit = (event) => {
+          event.preventDefault()
+          const {username, password} = this.state
+          alert(`输出的用户名是：${username}， 密码是：${password}`)
+        }
+
+        render() {
+          return (
+              <form action="https://www.baidu.com" onSubmit={this.handleSubmit}>
+                用户名：<input onChange={this.saveUsername} type="text" name="username"/>
+                密码：<input onChange={this.savePassword} type="password" name="password"/>
+                <button>登录</button>
+              </form>
+          )
+        }
+      }
+
+      // 渲染组件到页面
+      ReactDOM.render(<Login />, document.getElementById('test'))
+
+      // Note： 受控组件：
+      //          页面中输入类DOM，随着输入，把输入存放在状态state中，等需要用的时候再从state中取
+
+    </script>
+
+  </body>
+</html>

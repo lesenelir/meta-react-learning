@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  </head>
+  <body>
+    <div id="test"></div>
+
+    <script src="../js/react.development.js"></script>
+    <script src="../js/react-dom.development.js"></script>
+    <script src="../js/babel.min.js"></script>
+    <script src="../js/prop-types.js"></script>
+
+    <script type="text/babel">
+      // 创建组件
+      class Demo extends React.Component {
+
+        showData = () => {
+          const {input1} = this
+          alert(input1.value)
+        }
+
+        showData2 =() => {
+          alert(this.input2.value)
+        }
+
+        render() {
+          return (
+              <div>
+                <input ref={currentNode => this.input1 = currentNode} type="text" placeholder="点击按钮显示数据"/>
+                <button onClick={this.showData}>点击</button>
+                <input ref={c => this.input2 = c} onBlur={this.showData2} type="text" placeholder="失去焦点显示数据"/>
+              </div>
+          )
+        }
+      }
+
+      // 渲染组件到页面
+      ReactDOM.render(<Demo />, document.getElementById('test'))
+
+      // Note： ref属性是给开发人员操作DOM的
+      //        收到的是真正的节点，真实DOM
+
+    </script>
+
+  </body>
+</html>

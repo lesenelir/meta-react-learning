@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  </head>
+  <body>
+    <div id="test"></div>
+
+    <script src="../js/react.development.js"></script>
+    <script src="../js/react-dom.development.js"></script>
+    <script src="../js/babel.min.js"></script>
+    <script src="../js/prop-types.js"></script>
+
+    <script type="text/babel">
+      /**
+       *  通过onXxx属性指定事件处理函数，（注意大小写）
+       *    a.React使用的是自定义（合并）事件，而不是使用的原生DOM事件
+       *    b.React中的事件是通过事件委托方式处理的，（委托最外层的元素） - 事件委托原理是事件冒泡
+       *
+       *  通过event.target得到发生事件的DOM元素对象 （标签元素）
+       */
+
+      // 创建组件
+      class Demo extends React.Component {
+        // 返回一个容器，该容器可以存储ref所标识的节点
+        myRef = React.createRef()
+        myRef2 = React.createRef()
+
+        showData = () => {
+          // console.log(this.myRef)
+          alert(this.myRef.current.value)
+        }
+
+        showData2 = (event) => {
+          alert(event.target.value)
+        }
+
+        render() {
+          return (
+              <div>
+                <input ref={this.myRef} type="text" placeholder="点击按钮显示数据"/>
+                <button onClick={this.showData}>点击</button>
+                <input onBlur={this.showData2} type="text" placeholder="失去焦点显示数据"/>
+              </div>
+          )
+        }
+      }
+
+      // 渲染组件到页面
+      ReactDOM.render(<Demo />, document.getElementById('test'))
+    </script>
+
+  </body>
+</html>

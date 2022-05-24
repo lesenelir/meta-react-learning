@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>jsx练习</title>
+  </head>
+  <body>
+    <div id="test"></div>
+
+    <script src="../js/react.development.js"></script>
+    <script src="../js/react-dom.development.js"></script>
+    <script src="../js/babel.min.js"></script>
+
+    <script type="text/babel">
+
+      const data = ['Vue', 'React', 'Angular']
+
+      const virtualDOm = (
+          <div>
+            <h1>前端js框架</h1>
+            <ul>
+              {
+                data.map((item, index) => {
+                  // key 是虚拟DOM的唯一标识
+                  return <li key="index">{item}</li>
+                })
+              }
+            </ul>
+          </div>
+      )
+
+      ReactDOM.render(virtualDOm, document.querySelector('#test'))
+
+      // {} 放入js表达式
+      // js表达式： 一个表达式产生一个值，可以放在任何一个需要值的地方
+      // js表达式： a , a + b, arr.map, demo(1)
+
+    </script>
+
+  </body>
+</html>

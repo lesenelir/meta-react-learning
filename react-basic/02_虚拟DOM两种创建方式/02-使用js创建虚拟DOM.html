@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>使用jsx创建虚拟DOM</title>
+  </head>
+  <body>
+
+    <div id="test"></div>
+
+    <!--  核心库  -->
+    <script src="../js/react.development.js"></script>
+    <!--  react-dom 用于支持react操作DOM  -->
+    <script src="../js/react-dom.development.js"></script>
+
+    <!--  此处是javascript  -->
+    <script type="text/javascript">
+      // 1. 创建虚拟DOM
+      // document.createElement 创建真实DOM
+      // React.createElement(标签名，标签属性property，标签内容) 创建虚拟DOM
+      // React.createElement - 如果有多个标签嵌套的化，容易引起 【嵌套】
+      const virtualDOM = React.createElement('h1', {id: 'title'}, React.createElement('span', {}, 'Hello React'))
+
+      // 2. 渲染虚拟DOM到页面
+      ReactDOM.render(virtualDOM, document.querySelector('#test'))
+    </script>
+
+  </body>
+</html>
