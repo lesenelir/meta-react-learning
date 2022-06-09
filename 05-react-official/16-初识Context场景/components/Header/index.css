@@ -1,0 +1,31 @@
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 44px;
+  background-color: palevioletred;
+  text-align: center;
+  color: white;
+  line-height: 44px;
+}
+
+.header.black {
+  background-color: #000;
+  color: #fff;
+}
+
+.header.red {
+  background-color: red;
+  color: white;
+}
+
+.header.orange {
+  background-color: orange;
+  color: black;
+}
+
+.header.purple {
+  background-color: purple;
+  color: #ffffff;
+}

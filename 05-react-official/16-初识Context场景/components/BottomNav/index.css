@@ -1,0 +1,39 @@
+.bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 44px;
+  background-color: darkseagreen;
+}
+
+.item {
+  float: left;
+  width: 25%;
+  height: 100%;
+  text-align: center;
+  line-height: 44px;
+  font-size: 14px;
+  color: white;
+}
+
+.bottom-nav .item.active {
+  color: pink;
+}
+
+.bottom-nav .item.active-black {
+  color: black;
+}
+
+.bottom-nav .item.active-red {
+  color: red;
+}
+
+.bottom-nav .item.active-orange {
+  color: orange;
+}
+
+
+.bottom-nav .item.active-purple {
+  color: purple;
+}
