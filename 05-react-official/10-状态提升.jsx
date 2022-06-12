@@ -11,6 +11,9 @@
 // 子组件中的状态state由父组件来管理，并由props属性传递给子组件
 // 子组件只需要读取父组件传递过来的数据，并且只需要执行相关的方法
 
+// Note： 一般而言组件的state都是存储在自己的组件作用域内
+//        但是如果多个兄弟组件要共享数据，则可以把数据写在共同的父组件内
+
 class Info extends React.Component {
   render() {
     return (

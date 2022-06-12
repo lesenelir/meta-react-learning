@@ -11,7 +11,7 @@
 import Loading from "./13-loading"
 
 /**
- * lazy 接收一个动态导入组件的函数
+ * lazy 参数接收一个动态导入组件的函数 ， 该参数需要动态调用import()
  * 该函数返回一个promise
  * Promise 会 resolve一个默认导出的React组件 export default
  *
@@ -19,11 +19,12 @@ import Loading from "./13-loading"
  */
 
 // 使用之前： import Main from './13-main.jsx'
+// React.lazy 只支持默认导出
 const MainComponent = React.lazy(() => import('./13-main.jsx'))
 
 class App extends React.Component {
   render() {
-    console.log(MainComponent)
+    console.log(MainComponent) // 默认返回一个promise
     return (
         <div>
           {/*fallback属性：接受任何在组件加载过程中想要展示的React组件元素*/}

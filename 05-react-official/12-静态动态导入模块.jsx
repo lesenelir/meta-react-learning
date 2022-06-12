@@ -47,11 +47,3 @@ oBtn.onclick = async function () {
 // import() 动态导入 返回一个promise，该promise需要resolve 一个 default export的React 组件
 
 
-
-
-
-
-
-
-
-

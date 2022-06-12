@@ -50,6 +50,7 @@
 
 
 // 错误边界组件 （类组件中有 static getDerivedStateFromError 或 componentDIdCatch 方法）
+// 只有类中有   static getDerivedStateFromError 或 componentDIdCatch 一个，则该类就是错误边界组件
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props)
@@ -94,6 +95,7 @@ class Test extends React.Component {
   }
 }
 
+// 正常没有出错的组件
 class Sub extends React.Component {
   render() {
     return (

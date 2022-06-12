@@ -1,6 +1,11 @@
 /**
  * 非受控组件
- *  - 表单数据不受控于state，使用React ref从DOM节点中获取表单数据的组件
+ *  - 表单数据不受控于state，使用React ref从DOM节点中获取表单数据的原组件
+ *
+ *  受控组件和非受控组件：
+ *    - 都是针对表单数据而言
+ *    - 受控组件是由state控制；非受控组件是直接有ref从DOM节点中获取表单的DOM节点 （跟创建Refs有关）
+ *    - 表单数据一般都使用受控组件；非受控组件用的较少，简单的数据提交可以使用
  *
  */
 
@@ -24,6 +29,7 @@ class App extends React.Component {
 
   handleResetClick = (e) => {
     e.preventDefault()
+    // ref节点的引用对象的值存在于 current这个属性中
     // this.refs.usernameRef.value = ''
     // this.refs.passwordRef.value = ''
     this.usernameRef.current.value = ''

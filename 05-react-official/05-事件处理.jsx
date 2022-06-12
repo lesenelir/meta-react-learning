@@ -58,7 +58,7 @@ class Test extends React.Component {
   constructor(props) {
     super(props)
     // 方法1
-    // this.doSth = this.doSth.bind(this) // 把doSth 作为实例的一个属性
+    // this.doSth1 = this.doSth1.bind(this) // 把doSth 作为实例的一个属性
   }
 
   doSth1() { // doSth 本质是回调函数
@@ -80,9 +80,9 @@ class Test extends React.Component {
         <div>
           <button onClick={this.doSth}>click</button>
           {/*方法2*/}
-          {/*<button onClick={this.doSth.bind(this)}>click</button>*/}
+          {/*<button onClick={this.doSth1.bind(this)}>click</button>*/}
           {/*方法3*/}
-          {/*<button onClick={() => this.doSth()}>click</button>*/}
+          {/*<button onClick={() => this.doSth1()}>click</button>*/}
         </div>
     )
   }

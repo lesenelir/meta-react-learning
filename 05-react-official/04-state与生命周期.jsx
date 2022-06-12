@@ -83,10 +83,17 @@ class Board extends React.Component {
  *      result: this.state.result + this.props.content
  *    })
  *
+ *    // 【关键】：如果需要用this.props 或者 this.state 则使用回调函数的方式
+ *                因为this.props 或者 this.state 有可能是异步更新
+ *                所以setState 参数接收一个函数
+ *
+ *
  *    this.setState((state, props) => {
  *      // state 是上一个state
  *      // props 是此次更新时被使用的props
- *      result: state.result + props.content
+ *      return {
+ *        result: state.result + props.content
+ *      }
  *    })
  *  4. setState 操作合并的原理： 浅合并
  *    对于state中的引用变量 要赋值一个新的引用
@@ -152,7 +159,7 @@ root.render(<Father/>)
  *    - 单向数据流动 也是为了满足 props的只读性
  *
  *  Vue 中也是单向数据流 ， 但有 v-model  双向数据绑定
- *  React中没有 v-model 没法通过视图通过数据
+ *  React中没有 v-model 没法通过视图更新数据
  *
  */
 
