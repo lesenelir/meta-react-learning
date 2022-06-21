@@ -367,7 +367,7 @@
    * completed.
    *
    * When a function is provided to setState, it will be called at some point in
-   * the future (not synchronously). It will be called with the up to date
+   * the future (not synchronously). It will be called with the up to data
    * component arguments (state, props, context). These values can be different
    * from this.* because your function may be called after receiveProps but before
    * shouldComponentUpdate, and this new state, props, and context will not yet be

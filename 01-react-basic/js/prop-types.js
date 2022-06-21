@@ -400,7 +400,7 @@ module.exports = function(isValidElement, throwOnDirectAccess) {
       var propValue = props[propName];
       var propType = getPropType(propValue);
       if (propType !== expectedType) {
-        // `propValue` being instance of, say, date/regexp, pass the 'object'
+        // `propValue` being instance of, say, data/regexp, pass the 'object'
         // check, but we can offer a more precise error message here rather than
         // 'of type `object`'.
         var preciseType = getPreciseType(propValue);
