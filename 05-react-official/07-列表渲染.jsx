@@ -115,6 +115,7 @@ class ListTable extends React.Component {
           {
             this.state.arr.map((item) => {
               {/*注意此处key的赋值，key 一般都是在map函数中指定*/}
+              // 此处用key来提取组件
               return (
                   <ListItem
                       item={item}
