@@ -4,7 +4,7 @@
  *
  *  修改state注意事项：
  *   1. 不要直接修改state，应该使用setState()
- *   2. state 更新有可能是异步的 （React会把多个setState调用合并为一个调用）
+ *   2. state 更新有可能是异步的 （React会把多个setState调用合并为一个调用） => 类组件setState会合并，hook不会进行合并
  *      setState((state, props) => {}) 接收函数而不是一个对象
  *      state是上一个state  props是此次更新时的props
  *   3. 操作setState中的引用变量， 要赋值一个新的引用
@@ -38,6 +38,11 @@ class DateTime extends React.Component {
       this.setState({
         dateTime: new Date().toString()
       })
+      // this.setState((preItem) => { // setState中包含函数的写法
+      //   return {
+      //     dateTime: preItem + 1
+      //   }
+      // })
     }, 1000)
   }
 
@@ -77,8 +82,9 @@ class Board extends React.Component {
 /**
  * sate使用的注意事项：
  *  1. 必须使用setState更改state
- *  2. 多个setState是会合并调用
- *  3. props和state更新数据要谨慎，尽量避免直接以来她们，有可能是在异步程序中更新
+ *  2. 多个setState是会合并调用  -  类组件会把修改state合并
+ *  3. props和state更新数据要谨慎，尽量避免直接依赖她们，有可能是在异步程序中更新
+ *    【注意】：state需要依赖state或者props值，则需要用()=> 来修改setState
  *    this.setState({
  *      result: this.state.result + this.props.content
  *    })

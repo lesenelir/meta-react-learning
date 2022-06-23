@@ -10,13 +10,17 @@ function Test(props) {
   return (
       <div>
         <h1>{title}</h1>
+        {/*
+          修改hooks的值 setXXX 一定要放入回调函数中，setXXX会自动执行，所以需要放入回调函数中
+          回调函数：等点击之后才执行回调函数中的内容，即执行回调函数中的setTitle
+        */}
         <button onClick={() => setTitle('button change')}>点击</button>
       </div>
   )
 }
 
-// const root = ReactDOM.createRoot(document.getElementById('root'))
-// root.render(<Test title="function props title"/>)
+const root = ReactDOM.createRoot(document.getElementById('root'))
+root.render(<Test title="function props title"/>)
 
 /**
  * 组件渲染的过程：
@@ -74,8 +78,8 @@ class App extends React.Component {
   }
 }
 
-const root = ReactDOM.createRoot(document.getElementById('root'))
-root.render(<App/>)
+// const root = ReactDOM.createRoot(document.getElementById('root'))
+// root.render(<App/>)
 
 
 /**

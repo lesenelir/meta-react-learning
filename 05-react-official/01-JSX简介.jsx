@@ -1,7 +1,9 @@
 /**
  * JSX 简介
  *
- * @type {JSX.Element}
+ *    - JSX 本身就是一个表达式 可以嵌入if for 语句中
+ *
+ *
  */
 
 // 标签语法
