@@ -1,7 +1,11 @@
 /**
  * 状态提升：
  *  - 解决组件与组件之间状态共享的问题
- *  - 需求： 多个组件反映相同的变化数据，则把该数据提升到最近的父组件中，并有props传递
+ *  - 需求： 多个组件反映相同的变化数据，则把该数据提升到共同的最近父组件中，并有props传递
+ *
+ *  - 状态提升一句话：
+ *      将子组件间的共享数据提升到最近共同父组件的state中，并通过props传递给子组件们
+ *
  */
 
 // 状态提升： 两个组件（无父子关系）共享一个数据，并且数据是同步变化的
@@ -52,8 +56,8 @@ class UserNameInfo extends React.Component {
           <Info username={this.props.username} inputNum={this.props.inputNum}/>
           <div>
             {/*事件处理*/}
+            {/*在事件处理的回调函数中写箭头函数*/}
             <input type="text" value={this.props.username}
-                   {/*在事件处理的回调函数中写箭头函数*/}
                    onChange={(e) => this.props.usernameChange(e)}
             />
           </div>

@@ -12,6 +12,7 @@ class Header extends React.Component{
             // 箭头函数内的参数 是该contextProvider提供方传递的参数
             (theme) => {
               console.log(theme)
+              // console.log(this.props.children) // 标题 - Header组件包裹的内容
               return <header className={`header ${theme}`}>{this.props.children}</header>
             }
           }

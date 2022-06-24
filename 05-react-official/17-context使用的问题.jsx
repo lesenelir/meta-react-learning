@@ -5,7 +5,7 @@
 
 // 创建Context容器
 const CityContext = React.createContext({
-  name: 'beijingu',
+  name: 'beijing',
   text: '北京'
 })
 
@@ -79,10 +79,14 @@ root.render(<App/>)
 
 /**
  * Context 容器最适合的场景：
- *  1.杂乱五张的组件都需要同一些数据
+ *  1.杂乱无章的组件都需要同一些数据
  *    单纯为了不层层传递属性的化，Context实际上不合适的 （不能保存组件的纯度，纯组件）
  *
  * Context 弱点：
  *  弱化以及污染组件的纯度(污染组件的复用性)，导致组件复用性降低
+ *
+ * Context 注意点：
+ *  context会根据引用标识决定何时进行渲染（本质上是通过value属性值的浅比较）
+ *
  */
 
