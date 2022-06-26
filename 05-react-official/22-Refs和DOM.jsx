@@ -14,7 +14,7 @@
  */
 
 // 1. 管理input的焦点
-//    通过一个按钮，清空 input value, input聚焦
+//    通过一个按钮，1.清空 input value, 2. input聚焦
 
 class MyInput extends React.Component {
   constructor(props) {
@@ -26,7 +26,7 @@ class MyInput extends React.Component {
   inputOperation = () => {
     console.log(this.inputRef)
 
-    const oInput = this.inputRef.current
+    const oInput = this.inputRef.current // input 真实节点
     oInput.value = ''
     oInput.focus()
   }
@@ -43,12 +43,101 @@ class MyInput extends React.Component {
 
 
 // 2. 媒体管理
+// 直接获取DOM元素本身
+class MyVideo extends React.Component {
+  constructor(props) {
+    super(props)
+    this.videoRef = React.createRef()
+  }
+
+  videoPlay = () => {
+    this.videoRef.current.play()
+  }
+
+  videoPause = () => {
+    this.videoPlay.current.pause()
+  }
+
+  render() {
+    return (
+        <div>
+          <video src="./123.mp4" controls/>
+          <button onClick={this.videoPlay}>Play</button>
+          <button onClick={this.videoPause}>Pause</button>
+        </div>
+    )
+  }
+}
 
 
 // 3. 强制动画
+// 直接获取DOM操作动画
+
+class MyBox extends React.Component {
+  constructor(props) {
+    super(props)
+    this.boxRef = React.createRef()
+  }
+
+  boxExtend = () => {
+    const oBox = this.boxRef.current  // 获取绑定boxRef的ref原生对象
+    oBox.style.width = '500px'
+    oBox.style.height = '500px'
+  }
+
+  render() {
+    return (
+        <>
+          <div
+              style={{
+                width: 200 + 'px',
+                height: 200 + 'px',
+                backgroundColor: 'orange',
+                transition: 'all 1s'
+              }}
+              ref = {this.boxRef}
+          >
+          </div>
+          <button onClick={this.boxExtend}>Extend</button>
+        </>
+    )
+  }
+}
 
 
 // 4. 模态框打开关闭
+class Modal extends React.Component {
+
+  constructor(props) {
+    super(props)
+    this.modalRef = React.createRef()
+  }
+
+  open = () => {
+    this.modalRef.current.style.display = 'block'
+  }
+
+  close = () => {
+    this.modalRef.current.style.display = 'none'
+  }
+
+  render() {
+    return (
+        <div
+            style={{
+              width: 300 + 'px',
+              border: '1px solid #000',
+              display: 'none'
+            }}
+            ref = {this.modalRef}
+        >
+          <h1> This is a Modal </h1>
+          <p> This is a super Modal </p>
+        </div>
+    )
+  }
+
+}
 
 
 /**
@@ -57,9 +146,10 @@ class MyInput extends React.Component {
  *
  *  通过createRef -> 可以创建ref对象
  *  通过元素的ref属性可以附加到React元素上 在constructor中编写
- *  一般通过构造器中给this上的属性复制一个ref，方便整个组件使用
+ *  一般通过构造器中给this上的属性赋值一个ref，方便整个组件使用
  *  ref只要传递到React元素中，就可以使用ref对象的current属性访问该真实DOM节点
- *  ref是在componentDidMount 和 componentDidUpdate触发前更新
+ *  【ref是在componentDidMount 和 componentDidUpdate触发前更新】
+ *  useEffect 是在真实DOM渲染完之后执行
  *
  */
 
@@ -110,7 +200,6 @@ function Test2(props) {
 }
 
 
-
 class App extends React.Component {
   constructor(props) {
     super(props)
@@ -135,7 +224,7 @@ class App extends React.Component {
   render() {
     return (
         <div>
-          <MyInput/>
+          {/*<MyInput/>*/}
           <Test ref={this.testRef}>{this.state.text}</Test>
         </div>
     );

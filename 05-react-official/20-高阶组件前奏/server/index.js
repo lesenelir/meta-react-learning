@@ -1,6 +1,6 @@
 const express = require('express')
-const {readFileSync} = require('fs')
-const {resolve} = require('path')
+const {readFileSync} = require('node:fs')
+const {resolve} = require('node:path')
 
 const app = express()
 
@@ -10,6 +10,7 @@ app.all('*', function (req, res, next) {
   next()
 })
 
+// 服务器返回的是对象
 app.get('/getTeachers', function (req, res) {
   const teacherData = JSON.parse(readFileSync(resolve(__dirname, './data/teachers.json'), 'utf-8'))
   res.send(teacherData)

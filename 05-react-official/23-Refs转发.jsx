@@ -23,7 +23,7 @@
 // 转发
 // React.forwardRef((props, ref) => {return React组件元素})
 
-// 3. 通过forwardRef想input转发ref属性
+// 3. 通过forwardRef向input转发ref属性
 const MyInput = React.forwardRef((props, ref) => {
   return (
       // ref 参数 只能用forwardRef定义的组件内可接收
@@ -40,13 +40,13 @@ class App extends React.Component {
 
   componentDidMount() {
     // 该生命周期函数可以拿到ref元素
-    // 4. myInputRef.current 通过 转发机制 获得子组件中的某个展示DOM节点
+    // 4. this.myInputRef.current 通过 转发机制 获得子组件中的某个展示DOM节点
     console.log(this.myInputRef)
   }
 
   inputOperate = () => {
     // 要拿到子组件的input真实DOM节点
-    const oInput = this.myInputRef.current
+    const oInput = this.myInputRef.current // 通过Ref转发拿到子组件的某个真实的DOM节点
     oInput.value = ''
     oInput.focus()
   }

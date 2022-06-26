@@ -1,17 +1,20 @@
 /**
  * HOC High Order Component
- * HOC 不是React提供的API ，是一种高级的设计模式【横向切割】
- * HOC 是一个函数，接受一个组件参数，返回一个新的组件
- * 普通组件返回一个UI，HOC返回一个新组件
- * HOC不能修改参数组件，只能传入组件所需要的props
- * HOC是一个没有副作用的纯函数
+ * 1- HOC 不是React提供的API ，是一种高级的设计模式【横向切割】
+ * 2- HOC 是一个函数，接受一个组件参数，返回一个新的组件
+ * 3- 普通组件返回一个UI，HOC返回一个新组件
+ * 4- HOC不能修改参数组件，只能传入组件所需要的props
+ * 5- HOC是一个没有副作用的纯函数
+ * 6- HOC参数除了必须填写被包裹的组件参数之外，其余参数根据需求增加
+ * 7- HOC 不关心数据如何使用，包裹组件（参数）不关心数据从哪里来
+ * 8- HOC 和 包裹组件 直接唯一的契合点就是 props （HOC返回的组件来传递数据给包裹组件）
  *
- * HOC参数除了必须填写被包裹的组件参数之外，其余参数根据需求增加
- * HOC 不关心数据如何使用，包裹组件（参数）不关心数据从哪里来
- * HOC 和 包裹组件 直接唯一的契合点就是 props
  *
- * 包裹组件致力于渲染
+ * 包裹组件致力于视图的渲染
  * 高阶组件致力于包裹组件的逻辑、数据、数据请求
+ *
+ *
+ *
  */
 
 // 第一个参数是需要包裹的参数
@@ -19,6 +22,14 @@ function listHoc(WrapperComponent, fetchListData) {
   return class extends React.Component {
     state = {
       listData: []
+    }
+
+    async componentDidMount() {
+      // this.props.field 是返回的新组件传入的数据 = 满足第10行所述
+      const result = await fetchListData(this.props.field)
+      this.setState({
+        listData: result.data
+      })
     }
 
     removeStudent = (id) => {
@@ -38,14 +49,12 @@ function listHoc(WrapperComponent, fetchListData) {
       })
     }
 
-    async componentDidMount() {
-      const result = await fetchListData(this.props.field)
-      this.setState({
-        listData: result.data
-      })
-    }
-
     render() {
+      // return (
+      //    WrapperComponent 是参数组件 也被称为 包裹组件
+      //     <WrapperComponent data={this.state.listData}/>
+      // )
+
       return (
           <>
             {
