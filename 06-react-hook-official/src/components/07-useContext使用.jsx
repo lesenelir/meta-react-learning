@@ -38,6 +38,7 @@ class Bar extends React.Component {
 }
 
 const Baz = (props) => {
+  // 函数组件的 useContext 相当于 类组件中 consumer
   const value = useContext(AppContext)
 
   return (

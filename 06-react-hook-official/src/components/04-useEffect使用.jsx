@@ -29,10 +29,16 @@ import {useEffect, useState} from "react";
  *  useEffect
  *    - 第二个参数是当前effect函数所需要的依赖项
  *    - 依赖是[] 在DidMount初次渲染 和  WillUnmount卸载的时候执行
+ *      - [] 不检测任何数据的更新，一般都在这个依赖项中做数据的请求
  *    - 有依赖项，并且依赖项不一致的时候 会重新执行useEffect
+ *      - [num] 检测num数据的更新则调用useEffect
+ *      - 不写第二个参数：数组中任何数据的更新都会触发useEffect调用
+ *    - useEffect中return 一个函数 则会在组件卸载时会触发该callback的函数
+ *
  *
  *
  *  React组件有两种副作用操作：需要清除的副作用 和 不需要清除的副作用
+ *    - callback中清除一些残余的数据
  *    - 清除副作用的好处：放置内存泄漏
  *    - 如果useEffect 返回了一个函数，则React在执行清除操作的时候会执行该函数（effect可以返回一个清除函数）
  *    - 清除副作用： useEffect中要return 一个函数
